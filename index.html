@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Magic Tournaments</title>
+</head>
+<body>
+    <div class="header">
+        <h1>MAGIC TOURNAMENTS</h1>
+    </div>
+    <div class="index">
+        <form method="post" action="{{ url_for('auth.login') }}">
+            <button type="submit" name="login">Log In</button>
+        </form>
+
+        <form method="post" action="{{ url_for('auth.register') }}">
+            <button type="submit" name="register">Register</button>
+        </form>
+    </div>
+</body>
+<footer>
+    View source in github: <a href="https://github.com/jml850?tab=repositories">Github</a>
+</footer>
+</html>

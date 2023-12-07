@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home_style.css') }}">
+    <title>Create League</title>
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('menu-list');
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="create_l-header">
+        <h1 class="create_l-h1">CREATE LEAGUE</h1>
+        <button id="menu-button" onclick="toggleMenu()">Menu</button>
+        <ul id="menu-list">
+            <li><a href="{{ url_for('main.home') }}">Home</a></li>
+            <li><a href="{{ url_for('main.eliminate') }}">Eliminate</a></li>
+            <li><a href="{{ url_for('main.settings') }}">Settings</a></li>
+            <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+        </ul>
+    </div>
+    <div class="create_l">
+        <form method="POST" action="{{ url_for('main.create_l') }}">
+            {{ form.hidden_tag() }}
+            <div class="create_l-form">
+                <label for="league_name" id="league_name" class="label">League Name</label>
+                <input type="text" name="league_name" class="create_l-input" required>
+            </div>
+            <div class="create_l-form">
+                <label for="player1" id="player1" class="label">1.Player Name</label>
+                <input type="text" name="player1" class="create_l-input" required>
+            </div>
+            <div class="create_l-form">
+                <label for="player2" id="player2" class="label">2.Player Name</label>
+                <input type="text" name="player2" class="create_l-input" required>
+            </div>
+            <div class="create_l-form">
+                <label for="player3" id="player3" class="label">3.Player Name</label>
+                <input type="text" name="player3" class="create_l-input">
+            </div>
+            <div class="create_l-form">
+                <label for="player4" id="player4" class="label">4.Player Name</label>
+                <input type="text" name="player4" class="create_l-input">
+            </div>
+            <div class="create_l-form">
+                <label for="deck1" id="deck1" class="label">1.Deck</label>
+                <input type="text" name="deck1" class="create_l-input" required>
+            </div>
+            <div class="create_l-form">
+                <label for="deck2" id="deck2" class="label">2.Deck</label>
+                <input type="text" name="deck2" class="create_l-input" required>
+            </div>
+            <div class="create_l-form">
+                <label for="deck3" id="deck3" class="label">3.Deck</label>
+                <input type="text" name="deck3" class="create_l-input">
+            </div>
+            <div class="create_l-form">
+                <label for="deck4" id="deck4" class="label">4.Deck</label>
+                <input type="text" name="deck4" class="create_l-input">
+            </div>
+            <div class="create_l-form">
+                <label for="deck5" id="deck5" class="label">5.Deck</label>
+                <input type="text" name="deck5" class="create_l-input">
+            </div>
+            <div class="create_l-form">
+                <label for="deck6" id="deck6" class="label">6.Deck</label>
+                <input type="text" name="deck6" class="create_l-input">
+            </div>
+            <div class="create_l-form">
+                <label for="deck7" id="deck7" class="label">7.Deck</label>
+                <input type="text" name="deck7" class="create_l-input">
+            </div>
+            <div class="create_l-form">
+                <label for="deck8" id="deck8" class="label">8.Deck</label>
+                <input type="text" name="deck8" class="create_l-input">
+            </div>
+            
+            <button type="submit" class="btn btn-primary">Create League</button>
+        </form>
+    </div>
+</body>
+<footer>
+</footer>
+</html>

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home_style.css') }}">
+    <title>Active Tournaments</title>
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('menu-list');
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="current_t-header">
+        <h1 class="current_t-h1">ACTIVE TOURNAMENTS</h1>
+        <button id="menu-button" onclick="toggleMenu()">Menu</button>
+        <ul id="menu-list">
+            <li><a href="{{ url_for('main.home') }}">Home</a></li>
+            <li><a href="{{ url_for('main.eliminate') }}">Eliminate</a></li>
+            <li><a href="{{ url_for('main.settings') }}">Settings</a></li>
+            <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+        </ul>
+    </div>
+    <div>
+        <ul>
+            {% for tournament in tournaments %}
+            <div class="tournament-container">
+                <div class="tournament-item">
+                    <a>League</a>
+                </div>
+                <ul>
+                    <div class="tournament-data">
+                        <a>{{ tournament.league.league_name }}</a>
+                    </div>
+                </ul>
+                <div class="tournament-item">
+                    <a>Tournament Name</a>
+                </div>
+                <ul>
+                    <div class="tournament-data">
+                        <a>{{ tournament.tournament_name }}</a>
+                    </div>
+                </ul>
+                <div class="tournament-item">
+                    <a>Matches Won</a>
+                </div>
+                <ul>
+                    {% for participant in tournament.participants %}
+                    <div class="tournament-data">
+                        <a>{{ participant.player_name }} ➡ {% for score in player_scores %}{% if score.player_id == participant.id and score.tournament_id == tournament.id %}{{ score.score }}{% endif %}{% endfor %}</a>
+                    </div>
+                    {% endfor %}
+                </ul>
+                <div class="tournament-item">
+                    <a>Decks</a>
+                </div>
+                <ul>
+                    {% for deck in tournament.decks %}
+                    <div class="tournament-data">
+                        <a>{{ deck.deck_name }}</a>
+                    </div>
+                    {% endfor %}
+                </ul>
+                <br>
+                <br>
+                <a href="{{ url_for('main.create_m', tournament_id=tournament.id) }}" class="current_t-button">Create Match</a>
+                <a href="{{ url_for('main.current_m', tournament_id=tournament.id) }}" class="current_t-button">Matches</a>
+                <br>
+                <br>
+            </div>
+            <br>
+            
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+<footer>
+</footer>
+</html>

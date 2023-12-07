@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home_style.css') }}">
+    <title>Active Leagues</title>
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('menu-list');
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="current_l-header">
+        <h1 class="current_l-h1">ACTIVE LEAGUES</h1>
+        <button id="menu-button" onclick="toggleMenu()">Menu</button>
+        <ul id="menu-list">
+            <li><a href="{{ url_for('main.home') }}">Home</a></li>
+            <li><a href="{{ url_for('main.eliminate') }}">Eliminate</a></li>
+            <li><a href="{{ url_for('main.settings') }}">Settings</a></li>
+            <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+        </ul>
+    </div>
+    <div>
+        <ul>
+            {% for league in active_leagues %}
+            <div class="league-container">
+                <div class="league-item">
+                    <a>User</a>
+                </div>
+                <ul>
+                    <div class="league-data">
+                        <a>{{ league.user.username }}</a>
+                    </div>
+                </ul>
+                <div class="league-item">
+                    <a>League Name</a>
+                </div>
+                <ul>
+                    <div class="league-data">
+                        <a>{{ league.league_name }}</a>
+                    </div>
+                </ul>
+                <div class="league-item">
+                    <a>Players</a>
+                </div>
+                <ul>
+                    {% for participant in league.participants %}
+                    <div class="league-data">
+                        <a>{{ participant.player_name }}</a>
+                    </div>
+                    {% endfor %}
+                </ul>
+                <div class="league-item">
+                    <a>Decks</a>
+                </div>
+                <ul>
+                    {% for deck in league.decks %}
+                    <div class="league-data">
+                        <a>{{ deck.deck_name }}</a>
+                    </div>
+                    {% endfor %}
+                </ul>
+                <br>
+                <br>
+                <a href="{{ url_for('main.create_t', league_id=league.id) }}" class="current_l-button">Create Tournament</a>
+                <a href="{{ url_for('main.current_t', league_id=league.id) }}" class="current_l-button">Tournaments</a>
+                <br>
+                <br>
+            </div>
+            <br>
+            
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+<footer>
+</footer>
+</html>
