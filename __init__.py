@@ -15,8 +15,8 @@ login_manager.login_view = "auth.login"
 
 
 # Importa los blueprints definidos en los archivos routes
-from app.routes.auth import auth as auth_blueprint
-from app.routes.main import main as main_blueprint
+from auth import auth as auth_blueprint
+from main import main as main_blueprint
 
 # Registra los blueprints con la aplicación
 app.register_blueprint(auth_blueprint)
@@ -25,7 +25,7 @@ app.register_blueprint(main_blueprint)
 
 @login_manager.user_loader
 def load_user(user_id):
-    from app.models import User  # Ahora, importa User dentro de esta función
+    from models import User  # Ahora, importa User dentro de esta función
     return User.query.get(int(user_id))
 
 
