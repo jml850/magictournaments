@@ -1,7 +1,7 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
-from app import db
-from app.forms import LeagueForm, TournamentForm, MatchForm
+from __init__ import db
+from forms import LeagueForm, TournamentForm, MatchForm
 from werkzeug.security import generate_password_hash
 
 main = Blueprint('main', __name__)
@@ -29,7 +29,7 @@ def home():
 @main.route('/create_l', methods=['GET', 'POST'])
 @login_required
 def create_l():
-    from app.models import League, Player, Deck
+    from models import League, Player, Deck
     form = LeagueForm()
     if request.method == 'POST':
         if form.validate_on_submit():
@@ -64,7 +64,7 @@ def create_l():
 @main.route('/current_l', methods=['GET', 'POST'])
 @login_required
 def current_l():
-    from app.models import League
+    from models import League
 
     active_leagues = League.query.filter_by(user=current_user, active=True).all()
 
@@ -75,7 +75,7 @@ def current_l():
 @main.route('/create_t', methods=['GET', 'POST'])
 @login_required
 def create_t():
-    from app.models import League, Tournament, Player, Deck, PlayerScore
+    from models import League, Tournament, Player, Deck, PlayerScore
     form = TournamentForm()
 
     league_id = request.args.get('league_id')
@@ -126,7 +126,7 @@ def create_t():
 @main.route('/current_t', methods=['GET', 'POST'])
 @login_required
 def current_t():
-    from app.models import Tournament, League, PlayerScore
+    from models import Tournament, League, PlayerScore
     
     league_id = request.args.get('league_id')
     
@@ -149,7 +149,7 @@ def current_t():
 @main.route('/create_m', methods=['GET', 'POST'])
 @login_required
 def create_m():
-    from app.models import Tournament, Match, Deck, PlayerScore
+    from models import Tournament, Match, Deck, PlayerScore
     form = MatchForm()
 
     tournament_id = request.args.get('tournament_id')
@@ -207,7 +207,7 @@ def create_m():
 @main.route('/current_m', methods=['GET', 'POST'])
 @login_required
 def current_m():
-    from app.models import Tournament, Match
+    from models import Tournament, Match
     
     tournament_id = request.args.get('tournament_id')
 
@@ -223,7 +223,7 @@ def current_m():
 @main.route('/delete', methods=['GET', 'POST'])
 @login_required
 def delete():
-    from app.models import Match
+    from models import Match
 
     match_id = request.args.get('match_id')
     tournament_id = request.args.get('tournament_id')
@@ -241,8 +241,8 @@ def delete():
 @main.route('/eliminate', methods=['GET', 'POST'])
 @login_required
 def eliminate():
-    from app.models import League, Tournament, Match
-    from app.forms import EliminateForm
+    from models import League, Tournament, Match
+    from forms import EliminateForm
 
     form = EliminateForm()
 
@@ -274,8 +274,8 @@ def eliminate():
 @main.route('/settings', methods=['GET', 'POST'])
 @login_required
 def settings():
-    from app.models import User
-    from app.forms import ChangeForm
+    from models import User
+    from forms import ChangeForm
 
     form = ChangeForm()
 
