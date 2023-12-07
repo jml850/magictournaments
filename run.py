@@ -1,5 +1,5 @@
-from app import app, db
-from app.models import User, League, Match, Player, Tournament, Deck
+from __init__ import app, db
+from models import User, League, Match, Player, Tournament, Deck
 
 
 if __name__ == '__main__':
