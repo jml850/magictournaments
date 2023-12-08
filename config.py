@@ -1,4 +1,4 @@
-    SECRET_KEY = 'MAGICTOURNAMENTS'
+SECRET_KEY = 'MAGICTOURNAMENTS'
 
 class Config:
     DEBUG = False  # Modo depuración (False en producción)
