@@ -1,4 +1,4 @@
-SECRET_KEY = '010MAGIC7YONKOUS323'
+    SECRET_KEY = 'MAGICTOURNAMENTS'
 
 class Config:
     DEBUG = False  # Modo depuración (False en producción)
