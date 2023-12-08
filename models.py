@@ -1,4 +1,4 @@
-from __init__ import db
+from app import db
 from sqlalchemy import ForeignKey
 from flask_login import UserMixin
 from sqlalchemy.schema import UniqueConstraint
