@@ -1,9 +1,12 @@
 Werkzeug==2.3.0
 Flask
+Flask-WTF==1.2.1
 Flask-Login
 Flask-SQLAlchemy
 Jinja2
 SQLAlchemy==1.4.15
+gunicorn==20.1.0
+
 
 
 
