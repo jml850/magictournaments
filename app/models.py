@@ -104,7 +104,7 @@ class Player(db.Model):
 #tournament
 class Tournament(db.Model):
     id = db.Column(db.Integer, primary_key=True)  
-    tournament_name = db.Column(db.String(100), unique=True, nullable=False)
+    tournament_name = db.Column(db.String(100), nullable=False)
     start_date = db.Column(db.DateTime)
     end_date = db.Column(db.DateTime)
     active = db.Column(db.Boolean, default=True)
@@ -124,8 +124,6 @@ class Tournament(db.Model):
     #back_populates relation with match
     matches = db.relationship('Match', back_populates='tournament', cascade='all, delete-orphan')
     player_scores = db.relationship('PlayerScore', back_populates='tournament', cascade='all, delete-orphan')
-
-    UniqueConstraint('user_id', 'tournament_name', name='unique_user_tournament_name')
 
 
 #match
