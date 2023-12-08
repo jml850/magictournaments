@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='home_style.css') }}">
+    <title>Create Tournament</title>
+    <script>
+        function toggleMenu() {
+            var menu = document.getElementById('menu-list');
+            if (menu.style.display === 'block') {
+                menu.style.display = 'none';
+            } else {
+                menu.style.display = 'block';
+            }
+        }
+    </script>
+</head>
+<body>
+    <div class="create_t-header">
+        <h1 class="create_t-h1">CREATE TOURNAMENT</h1>
+        <button id="menu-button" onclick="toggleMenu()">Menu</button>
+        <ul id="menu-list">
+            <li><a href="{{ url_for('main.home') }}">Home</a></li>
+            <li><a href="{{ url_for('main.eliminate') }}">Eliminate</a></li>
+            <li><a href="{{ url_for('main.settings') }}">Settings</a></li>
+            <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+        </ul>
+    </div>
+    <div class="create_t">
+        <form method="POST" action="{{ url_for('main.create_t', league_id=league.id) }}">
+            {{ form.hidden_tag() }}
+            
+            <div class="create_t-form">
+                <label class="create_t-label">Tournament Name</label>
+                <input type="text" name="tournament_name" class="create_t-input" required>
+            </div>
+            <div class="create_t-form">
+                <label class="create_t-label">Tournament Players</label>
+                {% for player in players %}
+                    <div class="checkbox">
+                        <input type="checkbox" name="players" value="{{ player.id }}">
+                        <label class="datalabel">{{ player.player_name }}</label>
+                    </div>
+                {% endfor %}
+            </div>
+            <div class="create_t-form">
+                <label class="create_t-label">Tournament Decks</label>
+                {% for deck in decks %}
+                    <div class="checkbox">
+                        <input type="checkbox" name="decks" value="{{ deck.id }}">
+                        <label class="datalabel">{{ deck.deck_name }}</label>
+                    </div>
+                {% endfor %}
+            <br>
+            <button type="submit" class="create_t-button">Create</button>
+        </form>
+    </div>
+</body>
+<footer>
+</footer>
+</html>

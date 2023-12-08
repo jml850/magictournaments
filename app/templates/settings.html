@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="stylesheet" href="{{ url_for('static', filename='home_style.css') }}">
+        <title>Settings</title>
+        <script>
+            function toggleMenu() {
+                var menu = document.getElementById('menu-list');
+                if (menu.style.display === 'block') {
+                    menu.style.display = 'none';
+                } else {
+                    menu.style.display = 'block';
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div class="settings-header">
+            <h1 class="settings-h1">SETTINGS</h1>
+            <button id="menu-button" onclick="toggleMenu()">Menu</button>
+            <ul id="menu-list">
+                <li><a href="{{ url_for('main.home') }}">Home</a></li>
+                <li><a href="{{ url_for('main.eliminate') }}">Eliminate</a></li>
+                <li><a href="{{ url_for('main.settings') }}">Settings</a></li>
+                <li><a href="{{ url_for('auth.logout') }}">Log Out</a></li>
+            </ul>
+        </div>
+        <div class="settings">
+            <form method="POST" action="{{ url_for('main.settings') }}">
+                {{ form.hidden_tag() }}
+
+                <div class="form-group">
+                    <label for="username" id="username"> New Username</label>
+                    <input type="text" name="username" class="settings-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="password" id="password">New Password</label>
+                    <input type="password" name="password" class="settings-input" required>
+                </div>
+                <div class="form-group">
+                    <label for="confirm_password" id="confirm_password">Confirm New Password</label>
+                    <input type="password" name="confirm_password" class="settings-input" required>
+                </div>
+                <button type="submit" class="settings-button">Change</button>
+            </form>
+        </div>
+    </body>
+    <footer>
+    </footer>
+</html>
