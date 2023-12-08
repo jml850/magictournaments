@@ -28,7 +28,7 @@ class User(UserMixin, db.Model):
 #league
 class League(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    league_name = db.Column(db.String(100), unique=True, nullable=False)
+    league_name = db.Column(db.String(100), nullable=False)
     creation_date = db.Column(db.DateTime)
     active = db.Column(db.Boolean, default=True)
 
@@ -42,8 +42,6 @@ class League(db.Model):
     decks = db.relationship('Deck', back_populates='related_league', lazy='dynamic', primaryjoin='League.id == Deck.league_id', cascade='all, delete-orphan')
     #back_populates relation with tournament
     tournaments = db.relationship('Tournament', back_populates='league', cascade='all, delete-orphan')
-
-    UniqueConstraint('user_id', 'league_name', name='unique_user_league_name')
 
 #players and decks relation table
 player_decks = db.Table(
