@@ -1,5 +1,6 @@
 Werkzeug==2.3.0
 Flask
+Flask-WTF==1.2.1
 Flask-Login
 Flask-SQLAlchemy
 Jinja2
