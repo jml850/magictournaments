@@ -10,7 +10,7 @@ First of all, the app starts with the index.html page where there are two button
 In login.html there are two input fields to enter the username and password. There is also a link to register.html below.
 In register.html there are three input fields to enter the username, password and password confirmation. There is also a link to login.html below.
 
-The user can then access to home.html, which is the main page and there are the buttons to navigate to create_l.html, current_l.html and eliminate.html.
+The user can then access to home.html, which is the main page and there are three buttons to navigate to create_l.html, current_l.html and eliminate.html.
 In the header there is a menu button that displays in all the followings pages.
 With the menu the user can navigate to home.html, eliminate.html, settings.html and log out route.
 
