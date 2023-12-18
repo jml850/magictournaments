@@ -26,7 +26,7 @@ In current_l.html all the user's active leagues are displayed.
 For each league there is the league name, player names, deck names, a button to create_t.html and another button to current_t.html.
 
 In create_t.html the user can create a tournament "inside" the league.
-There first field is for the tournament name.
+The first field is for the tournament name.
 Player names and deck names are then displayed with a check box to give the user the option to choose which players and decks are included in the tournament.
 
 When the tournament is successfully created the user is redirected to current_t.html page and there all the league´s active tournaments are displayed.
@@ -52,7 +52,9 @@ And run.py is the file to run the app.
 The requirements.txt includes all the necesary dependencies for the app.
 
 And for the last file, render.yaml, this file includes the hosting (render.com) configurations.
+Unfortunately the free render hosting version has several limitations but the app is fully visible. 
 
+You can visit the app at: https://magic-tournaments.onrender.com
 
 
 
