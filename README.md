@@ -3,7 +3,7 @@
 #### Description:
 
 Magic Tournaments is a web app to create and store magic the gathering tournaments and matches.
-Magic the gathering is a card game and you can play 1vs1 classic mode with another person or commander mode with 3 or 4 players.
+Magic the gathering is a famous card game and you can play 1vs1 classic mode with another person or commander mode with 3 or 4 players.
 The app allows you to create leagues, tournaments and matches with customized players and decks.
 
 First of all, the app starts with the index.html page where there are two buttons to login.html and register.html pages. In the footer there is also a link to the github repository.
